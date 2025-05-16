@@ -13,14 +13,14 @@ export default function Hero() {
   const modalRef = useRef<HTMLDivElement | null>(null);
   const [scrolled, setScrolled] = useState(false);
 
-useEffect(() => {
-  const handleScroll = () => {
-    setScrolled(window.scrollY > 10);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
 
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
 
   useEffect(() => {
@@ -59,65 +59,65 @@ useEffect(() => {
 
       {/* Navbar */}
       <nav className={`fixed w-full z-40 transition-all duration-300 ${scrolled ? "bg-black/30 backdrop-blur-md border-b border-white/10 shadow-sm" : "bg-transparent border-none"}`}>
-  <div className="flex items-center justify-between py-3 md:py-4 px-6 max-w-7xl mx-auto">
-    {/* Logo */}
-    <Link href="/" className="text-2xl md:text-3xl font-semibold tracking-tight text-white hover:opacity-90 transition">
-      Voyagr<span className="text-cyan-400"> Inc.</span>
-    </Link>
-
-    {/* Links */}
-    <ul className="hidden md:flex gap-8 font-medium text-white/90 text-sm tracking-wide">
-      {["Features", "How It Works", "FAQ", "Contact"].map(item => (
-        <li key={item}>
-          <Link
-            href={`#${item.toLowerCase().replace(/\s/g, '-')}`}
-            className="hover:text-cyan-300 transition"
-          >
-            {item}
+        <div className="flex items-center justify-between py-3 md:py-4 px-6 max-w-7xl mx-auto">
+          {/* Logo */}
+          <Link href="/" className="text-2xl md:text-3xl font-semibold tracking-tight text-white hover:opacity-90 transition">
+            Voyagr<span className="text-cyan-400"> Inc.</span>
           </Link>
-        </li>
-      ))}
-    </ul>
 
-    {/* CTA */}
-    <button className="hidden md:block bg-gradient-to-r from-sky-500 to-cyan-500 text-sm px-4 py-2 rounded-full font-medium text-white shadow hover:scale-105 transition">
-      🚀 Join
-    </button>
+          {/* Links */}
+          <ul className="hidden md:flex gap-8 font-semibold text-white text-base tracking-wide">
+            {["Features", "How It Works", "FAQ", "Contact"].map(item => (
+              <li key={item}>
+                <Link
+                  href={`#${item.toLowerCase().replace(/\s/g, '-')}`}
+                  className="hover:text-cyan-300 transition"
+                >
+                  {item}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
-    {/* Mobile Menu Toggle */}
-    <button className="md:hidden" onClick={toggleMenu}>
-      {isMenuOpen ? <FaTimes size={22} className="text-white" /> : <FaBars size={22} className="text-white" />}
-    </button>
-  </div>
-
-  {/* Mobile Dropdown */}
-  {isMenuOpen && (
-    <motion.div
-      initial={{ y: -40, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      className="md:hidden bg-black/80 text-white backdrop-blur-md"
-    >
-      <ul className="flex flex-col items-center py-4 gap-4">
-        {["Features", "How It Works", "FAQ", "Contact"].map(item => (
-          <li key={item}>
-            <Link
-              href={`#${item.toLowerCase().replace(/\s/g, '-')}`}
-              className="hover:text-cyan-300 transition"
-              onClick={toggleMenu}
-            >
-              {item}
-            </Link>
-          </li>
-        ))}
-        <li>
-          <button className="mt-2 bg-gradient-to-r from-sky-500 to-cyan-500 text-white px-5 py-2 rounded-full text-sm font-medium transition hover:scale-105">
+          {/* CTA */}
+          <button className="hidden md:block bg-gradient-to-r from-sky-500 to-cyan-500 text-sm px-4 py-2 rounded-full font-medium text-white shadow hover:scale-105 transition">
             🚀 Join
           </button>
-        </li>
-      </ul>
-    </motion.div>
-  )}
-</nav>
+
+          {/* Mobile Menu Toggle */}
+          <button className="md:hidden" onClick={toggleMenu}>
+            {isMenuOpen ? <FaTimes size={22} className="text-white" /> : <FaBars size={22} className="text-white" />}
+          </button>
+        </div>
+
+        {/* Mobile Dropdown */}
+        {isMenuOpen && (
+          <motion.div
+            initial={{ y: -40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="md:hidden bg-black/80 text-white backdrop-blur-md"
+          >
+            <ul className="flex flex-col items-center py-4 gap-4">
+              {["Features", "How It Works", "FAQ", "Contact"].map(item => (
+                <li key={item}>
+                  <Link
+                    href={`#${item.toLowerCase().replace(/\s/g, '-')}`}
+                    className="hover:text-cyan-300 transition"
+                    onClick={toggleMenu}
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <button className="mt-2 bg-gradient-to-r from-sky-500 to-cyan-500 text-white px-5 py-2 rounded-full text-sm font-medium transition hover:scale-105">
+                  🚀 Join
+                </button>
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </nav>
 
 
 
@@ -160,9 +160,11 @@ useEffect(() => {
             )}
           </div>
         </motion.div>
+       
+        
 
         {/* Animation */}
-        <motion.div
+        <motion.div 
           initial={{ x: 80, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1 }}
@@ -173,6 +175,7 @@ useEffect(() => {
             loop
             src={animationData}
             className="w-[320px] md:w-[460px] md:h-[460px]"
+
           />
         </motion.div>
       </div>
